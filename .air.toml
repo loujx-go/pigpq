@@ -1,0 +1,92 @@
+# 项目根目录，所有相对路径基于此目录
+root = "."
+# 存放测试数据的目录，通常不会被监控或构建
+testdata_dir = "testdata"
+# 临时文件（如编译生成的二进制）存放目录
+tmp_dir = "tmp"
+
+[build]
+# 运行生成的二进制文件时传递的命令行参数
+args_bin = []
+# 编译生成的可执行文件路径
+bin = "./tmp/main"
+# 构建命令：执行 go build 并输出到指定路径
+cmd = "go build -o ./tmp/main ."
+# 文件变更后延迟多少毫秒再触发构建（单位：毫秒）
+delay = 1000
+# 构建时忽略这些目录下的文件变更
+exclude_dir = ["assets", "tmp", "vendor", "testdata"]
+# 忽略特定文件名的变更（按文件名）
+exclude_file = []
+# 使用正则表达式忽略匹配的文件（如 _test.go 不触发构建）
+exclude_regex = ["_test.go"]
+# 是否忽略内容未变化的文件变更
+exclude_unchanged = false
+# 是否跟踪符号链接（symlink）指向的文件
+follow_symlink = false
+# 完全自定义运行命令（覆盖 bin 和 args_bin）
+full_bin = ""
+# 白名单：仅监控这些目录的变更（如果非空）
+include_dir = []
+# 监控哪些文件扩展名的变更
+include_ext = ["go", "tpl", "tmpl", "html"]
+# 额外包含特定文件（即使扩展名不在 include_ext 中）
+include_file = []
+# 停止旧进程前等待的时间（如 "500ms"）
+kill_delay = "1s"
+# 构建错误日志写入的文件路径
+log = "build-errors.log"
+# 是否使用轮询方式监控文件变更（性能较低，但兼容性好）
+poll = false
+# 轮询间隔（毫秒），仅当 poll = true 时有效
+poll_interval = 0
+# 构建成功后执行的命令
+post_cmd = []
+# 构建前执行的命令
+pre_cmd = []
+# 程序退出后是否自动重新运行
+rerun = false
+# rerun = true 时，重新运行前的延迟时间（毫秒）
+rerun_delay = 500
+# 停止旧进程时是否发送 SIGINT 信号（更优雅）
+send_interrupt = true
+# 构建失败时是否停止运行旧版本程序
+stop_on_error = false
+
+[color]
+# 应用输出日志的颜色（空表示默认）
+app = ""
+# 构建日志的颜色
+build = "yellow"
+# 主程序输出日志的颜色
+main = "magenta"
+# 运行器（runner）日志的颜色
+runner = "green"
+# 文件监听器（watcher）日志的颜色
+watcher = "cyan"
+
+[log]
+# 是否只显示主程序的日志，隐藏构建等系统日志
+main_only = false
+# 是否静默模式（不输出任何日志）
+silent = false
+# 是否在日志前添加时间戳
+time = false
+
+[misc]
+# 退出时是否自动删除生成的二进制文件
+clean_on_exit = false
+
+[proxy]
+# 你的 Go 应用监听的端口（0 表示不启用代理）
+app_port = 0
+# 是否启用内置反向代理功能
+enabled = false
+# 代理服务器监听的端口（外部访问此端口）
+proxy_port = 0
+
+[screen]
+# 每次重新构建时是否清空终端屏幕
+clear_on_rebuild = false
+# 清屏后是否保留滚动历史（视觉清屏但历史仍在）
+keep_scroll = true

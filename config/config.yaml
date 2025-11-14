@@ -1,0 +1,41 @@
+app:
+  app_env: local
+  debug: true
+  language: zh_CN
+  watch_config: true
+  base_path: storage
+  port: 8735
+jwt:
+  ttl: 7200
+  refresh_ttl: 3600
+  secret_key: 7ubxHbHbNtsPbKljGPqlhoB5MqA56xtovvOgCzNyPImAvmhJ07q6shrdTr1yetzu
+mysql:
+  enable: true
+  host: 14.103.131.51
+  port: 3306
+  database: jingxi
+  username: jingxi
+  password: cXbG8Se232NnEYi8
+  charset: utf8mb4
+  log_level: 1
+  table_prefix: "tbl_"
+  max_idle_conns: 10
+  max_open_conns: 100
+  max_lifetime: 3600s
+redis:
+  enable: true
+  host: 14.103.131.51
+  port: 6379
+  password: jingxi2025@
+  database: 0
+logger:
+  default_division: time
+  file_name: gin-layout.sys.log
+  division_time:
+    max_age: 15
+    rotation_time: 24
+  division_size:
+    max_size: 20
+    max_backups: 15
+    max_age: 15
+    compress: false
